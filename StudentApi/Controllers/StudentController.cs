@@ -102,7 +102,8 @@ namespace StudentApi.Controllers
 
             //this function create a response which returns newly inserted record details back to the caller
             //so, arg1 is the action name, arg2 is object consisting route specifications like id, arg3 is 
-            //prolly the object that gets returned/updated object
+            //prolly the object that gets returned/updated object...basically the object that gets returned gets assigned to the 
+            //student argument(3rd arg)
             return CreatedAtAction("GetStudent", new { id = student.StudentID }, student);
         }
 

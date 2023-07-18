@@ -27,5 +27,19 @@ namespace StudentApi.Models
 
             optionsBuilder.UseSqlServer("Server=.;Database=StudentDB;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=True;");
         }
+
+        //to seed data, we override the OnModelCreating() method. after seeding is done, we comment out the call to SeedData method
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            SeedData(modelBuilder);
+        }
+
+        private void SeedData(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Student>().HasData(
+                new Student { Age = 10, ContactNumber = 123, Name = "Josh", StudentID=1 },
+                new Student { Age = 11, ContactNumber = 124, Name = "Jordan", StudentID=2 }
+                );
+        }
     }
 }
